@@ -36,7 +36,7 @@ class AStar:
                     current_node = current_node.parent
                 return path[::-1]
 
-            neighbors = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+            neighbors = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
             for dx, dy in neighbors:
                 neighbor_x = current_node.x + dx
                 neighbor_y = current_node.y + dy
@@ -59,20 +59,21 @@ class AStar:
             print(' '.join(str(cell) for cell in row))
 
 grid = [
-    [0, 0, 0, 1, 0, 0],
-    [0, 1, 0, 0, 1, 0],
-    [0, 1, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 1, 0],
-    [0, 0, 0, 0, 1, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 1, 0, 0], # 0
+    [0, 0, 0, 0, 1, 0], # 1
+    [0, 1, 0, 0, 0, 0], # 2
+    [0, 0, 0, 0, 0, 0], # 3
+    [0, 1, 0, 1, 0, 0], # 4
+    [0, 0, 0, 0, 0, 0], # 5
+    [0, 0, 0, 1, 1, 0], # 6
+    [0, 0, 0, 0, 1, 0], # 7
+    [0, 0, 0, 0, 0, 0], # 8
+    [0, 0, 0, 0, 0, 0], # 9
+  #  0, 1, 2, 3, 4, 5
 ]
 
 start = (0, 0)
-goal = (7, 5)
+goal = (5, 5)
 
 astar = AStar(grid)
 path = astar.find_path(start, goal)
